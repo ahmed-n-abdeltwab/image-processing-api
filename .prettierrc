@@ -1,0 +1,11 @@
+{
+    "useTabs": true,
+    "javascript": {
+        "printWidth": 80,
+        "singleQuote": true,
+        "parser": "babel-flow",
+        "semi": true,
+        "tabWidth": 4,
+        "max_line_length":80
+    }
+}
