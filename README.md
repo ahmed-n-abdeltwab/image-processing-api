@@ -1,4 +1,4 @@
-# Welcome to image-processing-api 👋
+# Welcome to Image Processing API 👋
 ![Version](https://img.shields.io/badge/version-1.0.0-blue.svg?cacheSeconds=2592000)
 [![License: ISC](https://img.shields.io/badge/License-ISC-yellow.svg)](#)
 
@@ -23,6 +23,18 @@ npm run start
 ```sh
 npm run test
 ```
+
+## EndPoint
+```
+homepage  : /
+available images : /api/images
+```
+
+## Query on Available Images EndPoint `/api/images`
+1. filename
+2. width
+3. height
+### Example: `/api/images?filename=<name>&width=<number>&height<number>`
 
 ## Author
 
