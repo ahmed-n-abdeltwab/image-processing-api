@@ -1,22 +1,23 @@
 import { StatusCodes } from 'http-status-codes';
 import { Request, Response, NextFunction } from 'express';
-import NotFoundException from '../exceptions/NotFoundException';
-import sharp from 'sharp';
-import readDir from '../utilties/readDir';
-import array from '../utilties/array';
 import path from 'path';
 
+// import exceptions
+import NotFoundException from '../exceptions/NotFoundException';
+
+// import utilties
+import readDir from '../utilties/readDir';
+import array from '../utilties/array';
+import resize from '../utilties/resize';
+
+// import types
+import Query from '../types/Query';
+import ImageOption from '../types/ImageOption';
+
+// const values
 const ASSETS = path.join(process.env.PWD as string, 'assets');
 const THUMBNAILS = path.join(ASSETS, 'thumbnails');
 const RAWS = path.join(ASSETS, 'raws');
-
-type ImageOption = {
-	width?: number;
-	height?: number;
-};
-type Query = ImageOption & {
-	filename?: string;
-};
 
 export default async (res: Request, req: Response, next: NextFunction) => {
 	const dir = await readDir(RAWS);
@@ -28,18 +29,23 @@ export default async (res: Request, req: Response, next: NextFunction) => {
 			raws: dir,
 		});
 	if (!filename)
-		next(new NotFoundException(`Image : ${query.filename} is Not Found`));
-	else {
-		const IMAGE = path.join(RAWS, filename as string);
-		const { width, height }: ImageOption = query;
-		const options: ImageOption = {};
-		if (width) options.width = Number(width);
-		if (height) options.height = Number(height);
-		await sharp(IMAGE)
-			.resize(options)
-			.toFile(path.join(THUMBNAILS, filename as string));
-		req.status(StatusCodes.OK).sendFile(
-			path.join(THUMBNAILS, filename as string)
+		return next(
+			new NotFoundException(
+				`sorry the image '${query.filename}' is Not Found in the raws dir`
+			)
 		);
-	}
+
+	const IMAGE = path.join(RAWS, filename);
+	const { width, height }: ImageOption = query;
+	const options: ImageOption = {};
+	if (width) options.width = Number(width);
+	if (height) options.height = Number(height);
+	const isResized = await resize(IMAGE, options, filename);
+	if (!isResized)
+		return next(
+			new NotFoundException(
+				`sorry the image '${query.filename}' can't be proccessing`
+			)
+		);
+	req.status(StatusCodes.OK).sendFile(path.join(THUMBNAILS, filename));
 };
