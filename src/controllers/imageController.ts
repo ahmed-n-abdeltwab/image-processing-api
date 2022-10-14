@@ -24,7 +24,7 @@ export default async (res: Request, req: Response, next: NextFunction) => {
 	const filename = array.findString(dir as string[], query.filename);
 	if (!query.filename)
 		return req.status(StatusCodes.OK).send({
-			msg: 'please select from thought images',
+			msg: 'please select from the available images',
 			raws: dir,
 		});
 	if (!filename)
