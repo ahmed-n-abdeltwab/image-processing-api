@@ -24,7 +24,9 @@ describe('The Image Controller :', () => {
 	describe('If the request Query has image name', () => {
 		it('should respond with the file if the raws has at least one file', async () => {
 			const dir = (await readDir(RAWS)) as string[];
-			const response = await request.get('/api/images?filename=' + dir[0]);
+			const response = await request.get(
+				'/api/images?filename=' + dir[0]
+			);
 			if (dir.length) {
 				expect(response.headers['content-type']).toMatch(/image/);
 				expect(response.status).toEqual(200);
@@ -32,7 +34,9 @@ describe('The Image Controller :', () => {
 		});
 		it('should respond with the json if the raws has no file', async () => {
 			const dir = (await readDir(RAWS)) as string[];
-			const response = await request.get('/api/images?filename=' + dir[0]);
+			const response = await request.get(
+				'/api/images?filename=' + dir[0]
+			);
 			if (!dir.length) {
 				expect(response.headers['content-type']).toMatch(/json/);
 				expect(response.status).toEqual(200);
