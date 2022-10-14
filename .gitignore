@@ -4,3 +4,6 @@ build
 
 # ignore the images
 *.jpg
+
+# logs file ignore 
+logs*
