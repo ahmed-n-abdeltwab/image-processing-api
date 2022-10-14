@@ -1,5 +1,5 @@
 import supertest from 'supertest';
-import app from '../index';
+import app from '../../index';
 
 const request = supertest(app);
 describe('GET /api/images from the router', () => {
