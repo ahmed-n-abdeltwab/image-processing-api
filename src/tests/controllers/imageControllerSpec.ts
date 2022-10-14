@@ -15,9 +15,6 @@ describe('The Image Controller :', () => {
 				.set('Accept', 'application/json');
 			expect(response.headers['content-type']).toMatch(/json/);
 			expect(response.status).toEqual(200);
-			expect(response.body.msg).toEqual(
-				'please select from thought images'
-			);
 		});
 	});
 
