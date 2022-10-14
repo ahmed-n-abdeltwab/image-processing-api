@@ -27,7 +27,11 @@ npm run start
 ```sh
 npm run test
 ```
+## Run build 
 
+```sh
+npm run build
+```
 ## EndPoint
 ```
 homepage  : /
