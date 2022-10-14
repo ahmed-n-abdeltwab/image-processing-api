@@ -3,6 +3,10 @@
 [![License: ISC](https://img.shields.io/badge/License-ISC-yellow.svg)](#)
 
 > project that resize the images.
+> there is a folder name `assets` 
+> have two folder `raws` &  `thumbnails` 
+> put your images in the raws folder
+> that's it enjoy.
 
 ### 🏠 [Homepage](https://github.com/ahmednss/image-processing-api#readme)
 
