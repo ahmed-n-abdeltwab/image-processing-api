@@ -34,7 +34,7 @@ available images : /api/images
 1. filename
 2. width
 3. height
-### Example: `/api/images?filename=<name>&width=<number>&height<number>`
+### Example: `/api/images?filename=<name>&width=<number>&height=<number>`
 
 ## Author
 
