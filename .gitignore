@@ -1,5 +1,5 @@
 node_modules
-package-lock*
+package-lock.json
 build
 
 # ignore the images
@@ -7,3 +7,4 @@ build
 
 # logs file ignore 
 logs*
+
