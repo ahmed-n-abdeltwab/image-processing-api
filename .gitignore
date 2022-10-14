@@ -2,9 +2,6 @@ node_modules
 package-lock.json
 build
 
-# ignore the images
-*.jpg
-
 # logs file ignore 
 logs*
 
