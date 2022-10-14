@@ -16,16 +16,16 @@ import cacheMiddleware from './middlewares/cache.middleware';
 
 // middleware
 app.use(express.json());
-app.use(cacheMiddleware);
 app.use(Logger);
+app.use(cacheMiddleware);
 
 app.get('/', (req, res) => {
-	res.send(
+	res.status(200).send(
 		'<h1>Image Processing API</h1><a href="/api/images">images route</a>'
 	);
 });
-
 app.use('/api/images', imageRouter);
+
 app.use(notFoundMiddleware);
 app.use(errorHandlerMiddleware);
 
