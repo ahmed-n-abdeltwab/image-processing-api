@@ -44,7 +44,7 @@ export default async (res: Request, req: Response, next: NextFunction) => {
 	if (!isResized)
 		return next(
 			new NotFoundException(
-				`sorry the image '${query.filename}' can't be proccessing`
+				`sorry the image '${query.filename}' contains unsupported image format`
 			)
 		);
 	req.status(StatusCodes.OK).sendFile(path.join(THUMBNAILS, filename));
