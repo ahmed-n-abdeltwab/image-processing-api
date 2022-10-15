@@ -19,12 +19,12 @@ const ASSETS = path.join(process.env.PWD as string, 'assets');
 const THUMBNAILS = path.join(ASSETS, 'thumbnails');
 const RAWS = path.join(ASSETS, 'raws');
 
-export default async (res: Request, req: Response, next: NextFunction) => {
+export default async (req: Request, res: Response, next: NextFunction) => {
 	const dir = await readDir(RAWS);
-	const query: Query = res.query;
+	const query: Query = req.query;
 	const filename = array.findString(dir as string[], query.filename);
 	if (!query.filename)
-		return req.status(StatusCodes.OK).send({
+		return res.status(StatusCodes.OK).send({
 			msg: 'please select from the available images',
 			raws: dir,
 		});
@@ -47,5 +47,5 @@ export default async (res: Request, req: Response, next: NextFunction) => {
 				`sorry the image '${query.filename}' contains unsupported image format`
 			)
 		);
-	req.status(StatusCodes.OK).sendFile(path.join(THUMBNAILS, filename));
+	res.status(StatusCodes.OK).sendFile(path.join(THUMBNAILS, filename));
 };
