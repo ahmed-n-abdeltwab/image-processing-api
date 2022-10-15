@@ -19,7 +19,11 @@ const ASSETS = path.join(process.cwd() as string, 'assets');
 const THUMBNAILS = path.join(ASSETS, 'thumbnails');
 const RAWS = path.join(ASSETS, 'raws');
 
-export default async (req: Request, res: Response, next: NextFunction) => {
+export default async (
+	req: Request,
+	res: Response,
+	next: NextFunction
+): Promise<Response | NextFunction | void> => {
 	const dir = await readDir(RAWS);
 	const query: Query = req.query;
 	const filename = array.findString(dir as string[], query.filename);
@@ -47,5 +51,5 @@ export default async (req: Request, res: Response, next: NextFunction) => {
 				`sorry the image '${query.filename}' contains unsupported image format`
 			)
 		);
-	res.status(StatusCodes.OK).sendFile(path.join(THUMBNAILS, filename));
+	return res.status(StatusCodes.OK).sendFile(path.join(THUMBNAILS, filename));
 };

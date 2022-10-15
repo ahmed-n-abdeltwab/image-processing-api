@@ -19,7 +19,7 @@ app.use(express.json());
 app.use(Logger);
 app.use(cacheMiddleware);
 
-app.get('/', (req, res) => {
+app.get('/', (req: express.Request, res: express.Response): void => {
 	res.status(200).send(
 		'<h1>Image Processing API</h1><a href="/api/images">images route</a>'
 	);
@@ -31,7 +31,7 @@ app.use(errorHandlerMiddleware);
 
 const port = 5000;
 
-app.listen(port, () =>
+app.listen(port, (): void =>
 	console.log(`Server is listening at http://localhost:${port}`)
 );
 

@@ -1,7 +1,7 @@
 import { Request, Response, NextFunction } from 'express';
 import { promises as fsPromises } from 'fs';
 
-const getProcessingTimeInMS = (start: [number, number]) => {
+const getProcessingTimeInMS = (start: [number, number]): number => {
 	const NS_PER_SEC = 1e9; //  convert to nanoseconds
 	const NS_TO_MS = 1e6; // convert to milliseconds
 	const diff = process.hrtime(start);
