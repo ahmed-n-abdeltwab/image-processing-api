@@ -3,7 +3,7 @@ import app from '../../index';
 import readDir from '../../utilties/readDir';
 import path from 'path';
 
-const RAWS = path.join(process.env.PWD as string, 'assets/raws');
+const RAWS = path.join(process.cwd() as string, 'assets/raws');
 
 const request = supertest(app);
 

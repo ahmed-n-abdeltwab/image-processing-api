@@ -15,7 +15,7 @@ import Query from '../types/Query';
 import ImageOption from '../types/ImageOption';
 
 // const values
-const ASSETS = path.join(process.env.PWD as string, 'assets');
+const ASSETS = path.join(process.cwd() as string, 'assets');
 const THUMBNAILS = path.join(ASSETS, 'thumbnails');
 const RAWS = path.join(ASSETS, 'raws');
 

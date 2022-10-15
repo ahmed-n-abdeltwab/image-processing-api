@@ -2,7 +2,7 @@ import resize from '../../utilties/resize';
 import readDir from '../../utilties/readDir';
 import path from 'path';
 
-const RAWS = path.join(process.env.PWD as string, 'assets/raws');
+const RAWS = path.join(process.cwd() as string, 'assets/raws');
 
 describe('Resize the image in raws dir', () => {
 	it('should return boolean type', async () => {
