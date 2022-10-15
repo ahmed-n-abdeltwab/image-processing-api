@@ -29,7 +29,7 @@ app.use('/api/images', imageRouter);
 app.use(notFoundMiddleware);
 app.use(errorHandlerMiddleware);
 
-const port = process.env.PORT || 5000;
+const port = 5000;
 
 app.listen(port, () =>
 	console.log(`Server is listening at http://localhost:${port}`)
